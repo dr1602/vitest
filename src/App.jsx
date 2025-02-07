@@ -34,7 +34,7 @@ function App() {
       <input
         type='checkbox'
         id='disable-button-checkbox'
-        checked={buttonState.buttonColor.buttonDisabled}
+        checked={buttonState.buttonDisabled}
         onChange={handleChangeCheckbox}
       />
       <label htmlFor='disable-button-checkbox'>Disable button</label>

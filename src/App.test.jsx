@@ -1,7 +1,7 @@
 import { logRoles } from '@testing-library/dom'
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
-import { expect } from "vitest";
+import { describe, expect, test } from "vitest";
 
 test("Empty Test", () => {
 
@@ -28,32 +28,45 @@ test('Button click flow', () => {
   logRoles(container)
   
   const buttonElement = screen.getByRole('button', { name: /blue/i });
-
   expect(buttonElement).toHaveClass('red')
 
   fireEvent.click(buttonElement)
-
   expect(buttonElement).toHaveTextContent(/red/i)
-
   expect(buttonElement).toHaveClass('blue')
-
 })
 
-test('Checkbox flow', () => {
+describe('Checkbox flow', () => {
   render(<App/>)
 
   const buttonElement = screen.getByRole('button', { name: /blue/i })
   const checkboxElement = screen.getByRole('checkbox', { name: /disable button/i })
 
-  expect(buttonElement).toBeEnabled();
-  expect(checkboxElement).not.toBeChecked();
+  describe('when NOT checked',() => {
+    test('must be enabled', () => {
+      expect(buttonElement).toBeEnabled();
+    })
+    test('must NOT be gray', () => {
+      expect(buttonElement).not.toHaveClass('gray')
+    })
+  })
 
-  fireEvent.click(checkboxElement);
-  expect(checkboxElement).toBeChecked();
-  expect(buttonElement).toBeDisabled();
+  describe('when first clicked', () => {
+    fireEvent.click(checkboxElement);
+    test('must be checked', () => {
+      expect(checkboxElement).toBeChecked();
+    })
+    test('must be disabled',() =>{
+      expect(buttonElement).toBeDisabled();
+    })
+  })
 
-  fireEvent.click(checkboxElement);
-  expect(checkboxElement).not.toBeChecked();
-  expect(buttonElement).toBeEnabled();
-
+  describe('when clicked the second time', () => {
+    fireEvent.click(checkboxElement);
+    test('must NOT be checked',() =>{
+      expect(checkboxElement).not.toBeChecked();
+    })
+    test('must be enabled', () =>{
+      expect(buttonElement).toBeEnabled();
+    })
+  })
 })
