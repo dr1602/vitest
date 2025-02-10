@@ -3,26 +3,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 import { describe, expect, test } from "vitest";
 
-test("Empty Test", () => {
-
-});
-
-// test("Test throws error explicitly", () => {
-//   throw new Error('fail this test!')
-// });
-
-// test("App contains correct heading", () => {
-//   render(<App />);
-//   const headingElement = screen.getByText(/learn react/i);
-//   expect(headingElement).not.toBeInTheDocument();
-// });
-
-// test("App contains correct heading", () => {
-//   render(<App />);
-//   const headingElement = screen.getByText(/learn react/i);
-//   expect(headingElement).toBeInTheDocument();
-// });
-
 test('Button click flow', () => {
   const { container } = render(<App/>)
   logRoles(container)
@@ -35,38 +15,50 @@ test('Button click flow', () => {
   expect(buttonElement).toHaveClass('blue')
 })
 
-describe('Checkbox flow', () => {
+test('Checkbox flow', () => {
   render(<App/>)
 
+  // find elements
   const buttonElement = screen.getByRole('button', { name: /blue/i })
-  const checkboxElement = screen.getByRole('checkbox', { name: /disable button/i })
-
-  describe('when NOT checked',() => {
-    test('must be enabled', () => {
-      expect(buttonElement).toBeEnabled();
-    })
-    test('must NOT be gray', () => {
-      expect(buttonElement).not.toHaveClass('gray')
-    })
+  const checkboxElement = screen.getByRole('checkbox', { 
+    name: /disable button/i,
   })
 
-  describe('when first clicked', () => {
-    fireEvent.click(checkboxElement);
-    test('must be checked', () => {
-      expect(checkboxElement).toBeChecked();
-    })
-    test('must be disabled',() =>{
-      expect(buttonElement).toBeDisabled();
-    })
+  // check initial conditions
+  expect(buttonElement).toBeEnabled();
+  expect(checkboxElement).not.toBeChecked();
+
+  // click checkbox to be disabled button
+  fireEvent.click(checkboxElement)
+  expect(buttonElement).toBeDisabled()
+  expect(buttonElement).toHaveClass('gray')
+
+  // click checkbox again to re-enable button
+  fireEvent.click(checkboxElement)
+  expect(buttonElement).toBeEnabled();
+  expect(buttonElement).toHaveClass('red')
+})
+
+test('checkbox flow after button click', () => {
+  // render App
+  render(<App />);
+
+  //find elements
+  const buttonElement = screen.getByRole('button', { name: /blue/i });
+  const checkboxElement = screen.getByRole('checkbox', {
+    name: /disable button/i,
   })
 
-  describe('when clicked the second time', () => {
-    fireEvent.click(checkboxElement);
-    test('must NOT be checked',() =>{
-      expect(checkboxElement).not.toBeChecked();
-    })
-    test('must be enabled', () =>{
-      expect(buttonElement).toBeEnabled();
-    })
-  })
+  // click button to change to blue
+  fireEvent.click(buttonElement);
+
+  // click checkbox to disable button
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toBeDisabled();
+  expect(buttonElement).toHaveClass('gray')
+
+  // click checkbox again to re-enable button
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toBeEnabled();
+  expect(buttonElement).toHaveClass('blue')
 })

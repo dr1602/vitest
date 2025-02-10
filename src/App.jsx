@@ -5,6 +5,7 @@ function App() {
   const [buttonState, setButtonState] = React.useState({
     buttonColor: 'red',
     buttonDisabled: false,
+    buttonDisabledColor: 'gray',
   })
   const nextColor = buttonState.buttonColor === 'red' ? 'blue' : 'red'
   const handleChangeCheckbox = (event) => {
@@ -14,12 +15,10 @@ function App() {
     }))
   }
 
-  console.log(buttonState.buttonDisabled)
-
   return (
     <div>
       <button
-        className={buttonState.buttonColor}
+        className={!buttonState.buttonDisabled ? buttonState.buttonColor : buttonState.buttonDisabledColor }
         disabled={buttonState.buttonDisabled}
         onClick={
           () => setButtonState((prevState) => ({
