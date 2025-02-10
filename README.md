@@ -111,3 +111,18 @@ npm test
 - [creating a Vite project](https://vitejs.dev/guide/#scaffolding-your-first-vite-project)
 - [Vitest Testing Library example](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
 - [Vitest ESLint plugin](https://www.npmjs.com/package/eslint-plugin-vitest)
+
+
+# Notes
+
+## 23. Unit Testing Functions
+
+### Unit Testing Functions
+
+* Functions separte from componentes
+- Used by several components
+- Complex Logic
+
+* Unit test if
+- Complex logic difficult to test via functional tests
+- Too many edge cases
