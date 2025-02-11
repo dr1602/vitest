@@ -142,3 +142,15 @@ npm test
 * Issue with functional tests:
 - high-level makes them resistant to refactors
 - high-level makes them difficult to diagnose, is more an art than a science
+
+## 26 Review: Simple App
+* Test interactivity usin **fireEvent**
+
+* jest-don assertions:
+- **toBeEnabled()**
+- **toBeDisabled()**
+- **toBeChecked()**
+
+* **getByRole** option **{ name: }**
+* Jest/Vitest **describe** to group tests
+* Unit testing functions
