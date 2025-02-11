@@ -154,3 +154,52 @@ npm test
 * **getByRole** option **{ name: }**
 * Jest/Vitest **describe** to group tests
 * Unit testing functions
+
+## 27. ESLint and Prettier
+
+### ESLint and Prettier
+* ESLint: *Linter*
+* Prettier: *Formater*
+
+### ESLint
+
+* Popular **linter** for JavaScript
+
+* **Linter:** analyzes static text and marks syntax that breaks rules
+* **Static:** analyze code as written, not what happens when code is run
+
+* *Linting* keeps code style consistent, especially for multi-en projects
+* Also catches errors in code
+- Using variable before defining
+- importing from nonexisting file
+- etc
+
+### Linging vs. Formatting
+
+* Formatters(like prettier) automatically format code (idents, spacing)
+- Example spaces around curly braces
+
+* Linters address formant and code style
+- example: preferred assertion method
+
+**From**
+*expect(checkbox).toHaveAttribute(checked);*
+
+**To**
+*expect(checkbox).toBeChecked();*
+
+### ESLint Plugins
+
+* Plug-ins extend ESLint
+* Testing Library and jest-dom ESLint plugins, to enforce best practices
+*** Github testing library/ eslint-plugin-testing-library
+
+### Vitest ESLint Plugin
+
+* Vitest ESLing plugin:
+a. enforces best practices
+b. make sure test 'experiments' don't make it into CI
+c. *Prevents* ESLint from *flagging* Vitest globals like **test** and **describe**
+
+*** Github testing library/ eslint-plugin-jest
+*** Exactly the same as vitests
