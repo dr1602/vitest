@@ -8,7 +8,8 @@ function App() {
     buttonDisabled: false,
     buttonDisabledColor: 'gray',
   })
-  const nextColor = buttonState.buttonColor === 'medium-violet-red' ? 'midnight-blue' : 'medium-violet-red'
+  const nextColorClass = buttonState.buttonColor === 'medium-violet-red' ? 'midnight-blue' : 'medium-violet-red'
+  const nextColorTitleCase = kebabCaseToTilteCase(nextColorClass);
   const handleChangeCheckbox = (event) => {
     setButtonState((prevState) => ({
       ...prevState,
@@ -24,11 +25,11 @@ function App() {
         onClick={
           () => setButtonState((prevState) => ({
             ...prevState,
-            buttonColor: nextColor,
+            buttonColor: nextColorClass,
           }))
         }
       >
-        Change to {kebabCaseToTilteCase(nextColor)}
+        Change to {nextColorTitleCase}
       </button>
       <br />
       <input
