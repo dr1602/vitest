@@ -125,4 +125,20 @@ npm test
 
 * Unit test if
 - Complex logic difficult to test via functional tests
-- Too many edge cases
+- Too many edge 
+
+## 25. When to Unit Test
+
+### Discussion: When to Unit Test?
+
+* WHen to unit test?
+- kebabCaseToTilteCase is prettz simple
+- could be covered functional tests on button
+
+* For more complicated functions, unit test help with:
+- covering all posible edge cases
+- determining what caused functional tests to fail
+
+* Issue with functional tests:
+- high-level makes them resistant to refactors
+- high-level makes them difficult to diagnose, is more an art than a science
