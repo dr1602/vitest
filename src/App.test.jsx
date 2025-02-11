@@ -9,11 +9,11 @@ test('Button click flow', () => {
   logRoles(container)
   
   const buttonElement = screen.getByRole('button', { name: /blue/i });
-  expect(buttonElement).toHaveClass('red')
+  expect(buttonElement).toHaveClass('medium-violet-red')
 
   fireEvent.click(buttonElement)
   expect(buttonElement).toHaveTextContent(/red/i)
-  expect(buttonElement).toHaveClass('blue')
+  expect(buttonElement).toHaveClass('midnight-blue')
 })
 
 test('Checkbox flow', () => {
@@ -37,7 +37,7 @@ test('Checkbox flow', () => {
   // click checkbox again to re-enable button
   fireEvent.click(checkboxElement)
   expect(buttonElement).toBeEnabled();
-  expect(buttonElement).toHaveClass('red')
+  expect(buttonElement).toHaveClass('medium-violet-red')
 })
 
 test('checkbox flow after button click', () => {
@@ -61,7 +61,7 @@ test('checkbox flow after button click', () => {
   // click checkbox again to re-enable button
   fireEvent.click(checkboxElement);
   expect(buttonElement).toBeEnabled();
-  expect(buttonElement).toHaveClass('blue')
+  expect(buttonElement).toHaveClass('midnight-blue')
 })
 
 // way to describe tests, to join several tests and to help with test organization

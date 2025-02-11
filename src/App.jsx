@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import { kebabCaseToTilteCase } from './utils/helpers'
 
 function App() {
   const [buttonState, setButtonState] = React.useState({
@@ -27,7 +28,7 @@ function App() {
           }))
         }
       >
-        Change to {nextColor}
+        Change to {kebabCaseToTilteCase(nextColor)}
       </button>
       <br />
       <input
