@@ -3,11 +3,11 @@ import './App.css'
 
 function App() {
   const [buttonState, setButtonState] = React.useState({
-    buttonColor: 'red',
+    buttonColor: 'medium-violet-red',
     buttonDisabled: false,
     buttonDisabledColor: 'gray',
   })
-  const nextColor = buttonState.buttonColor === 'red' ? 'blue' : 'red'
+  const nextColor = buttonState.buttonColor === 'medium-violet-red' ? 'midnight-blue' : 'medium-violet-red'
   const handleChangeCheckbox = (event) => {
     setButtonState((prevState) => ({
       ...prevState,

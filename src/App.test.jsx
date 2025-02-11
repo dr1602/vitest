@@ -2,6 +2,7 @@ import { logRoles } from '@testing-library/dom'
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 import { describe, expect, test } from "vitest";
+import { kebabCaseToTilteCase } from './utils/helpers';
 
 test('Button click flow', () => {
   const { container } = render(<App/>)
@@ -61,4 +62,19 @@ test('checkbox flow after button click', () => {
   fireEvent.click(checkboxElement);
   expect(buttonElement).toBeEnabled();
   expect(buttonElement).toHaveClass('blue')
+})
+
+// way to describe tests, to join several tests and to help with test organization
+describe(('Kebab Case to Title Case'), () => {
+  test(('works for no hyphens'), () => {
+    expect(kebabCaseToTilteCase('red')).toBe('Red');
+  })
+
+  test(('works for one hyphen'), () => {
+    expect(kebabCaseToTilteCase('midnight-blue')).toBe('Midnight Blue');
+  })
+
+  test(('works for multiple hyphens'), () => {
+    expect(kebabCaseToTilteCase('medium-violet-red')).toBe('Medium Violet Red');
+  })
 })

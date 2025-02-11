@@ -15,8 +15,6 @@ function App() {
     }))
   }
 
-  console.log(buttonState.buttonDisabled)
-
   return (
     <div>
       <button
